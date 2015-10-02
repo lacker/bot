@@ -10,4 +10,4 @@ slack.on('open', () => {
   console.log('connected.');
 });
 
-console.log('reached end of main.js');
+slack.login();
