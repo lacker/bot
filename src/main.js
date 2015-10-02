@@ -7,5 +7,7 @@ let autoMark = true;
 let slack = new Slack(token, autoReconnect, autoMark);
 
 slack.on('open', () => {
-  conso.log('connected.');
+  console.log('connected.');
 });
+
+console.log('reached end of main.js');
