@@ -10,8 +10,13 @@ slack.on('open', () => {
   console.log('connected.');
 });
 
-slack.onMessage((message) => {
-  console.log('saw message:', message);
+slack.on('message', (message) => {
+  console.log('saw message:', message.text);
+  let channel = slack.getChannelGroupOrDMByID(message.channel);
+  let user = slack.getUserByID(message.user);
+  if (message.text == 'hi') {
+    channel.send('hi ' + user.name);
+  }
 });
 
 slack.login();
