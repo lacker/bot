@@ -10,4 +10,8 @@ slack.on('open', () => {
   console.log('connected.');
 });
 
+slack.onMessage((message) => {
+  console.log('saw message:', message);
+});
+
 slack.login();
