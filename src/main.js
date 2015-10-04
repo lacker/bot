@@ -19,4 +19,8 @@ slack.on('message', (message) => {
   }
 });
 
+slack.on('error', (error) => {
+  console.log('saw an error:', error);
+});
+
 slack.login();
