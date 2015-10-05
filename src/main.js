@@ -10,12 +10,19 @@ slack.on('open', () => {
   console.log('connected.');
 });
 
+let canned = {
+  'hi': 'hi $name',
+  'cool': ':sunglasses:',
+};
+
 slack.on('message', (message) => {
   console.log('saw message:', message.text);
   let channel = slack.getChannelGroupOrDMByID(message.channel);
   let user = slack.getUserByID(message.user);
-  if (message.text == 'hi') {
-    channel.send('hi ' + user.name);
+  if (canned[message.text]) {
+    let response = canned[message.text];
+    response = response.replace('$name', user.name);
+    channel.send(response);
   }
 });
 
